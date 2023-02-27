@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+/* footer */
+.footer_info{
+	background-color: rgba(101, 119, 83, 0.808);
+	text-align: right;
+	position:relative;
+	bottom:0;
+	height:auto;
+	padding: 30px;
+	
+}
+.footer_link{
+	display: inline-block;
+	padding:10px;
+} 
+.footer_link ul{
+	margin:0px;
+}
+.footer_link li {
+	padding:0px 5px;
+}
+
+.footer_link li a{
+	letter-spacing: 2px;	/* 글자간격 */
+	text-decoration:none;
+	color: #44433c ;
+}
+.footer_info_customer{
+	color:#E5EBB7;
+}
+.footer_info_company {
+	padding-top:10px;
+	color:#E5EBB7;
+}
+.footer_info_company strong{
+	color:#EEF2CE;
+}
+
+
+
+
+
+
+
+
+
+
+

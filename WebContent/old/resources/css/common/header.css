@@ -1,0 +1,103 @@
+@charset "UTF-8";
+/* -------------- 헤더 시작 ---------------- */
+	header{
+	    position: sticky;
+	    margin:20px;								
+	    padding: 30px;
+	    background-color: #657753ce;	/* 배경색 */
+	    display:flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    border-style: none;
+	}
+	hr{
+		border: 0; 
+	  	height: 1px; 
+	  	background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	  	background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	  	background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	  	background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+	}
+	ul{
+	    list-style-type: none ;
+	    display: flex;
+	    padding-top: 10px;
+	}
+	.a{
+	    text-decoration:none;
+	}
+	#mainLogo img{
+	    image-rendering: auto;
+	    width:300px;
+	    padding :10px;
+	    margin:20px;
+	}
+	#mainNav{
+		display: flex;
+	    justify-content:center;
+	    align-items:end;
+	}
+	#mainNav ul li {
+	    padding: 8px 20px;
+	    font-weight:bold;
+	    font-size: 30px;
+	}
+	#mainNav ul li a{
+		color:#F9F9F9;
+	}
+
+	.nav_li{
+	    font-size: 20px;
+	    color: rgb(231, 159, 159);
+	}
+	.navbar {
+	    display: flex;
+	    
+	}
+	#mainSide{
+		display: flex;
+	    justify-content:flex-end; 
+	    align-items:end;
+	    padding: 30px 20px ;  
+	}
+	
+	#mainSide .navbar{
+	    display: flex;
+	    justify-content: flex-end;
+	    padding: 10px;
+	    border: 10px;;
+	}
+	#my a{
+		color:#F9F9F9;
+	}
+	#my i{
+		color:#F9F9F9;
+	}
+	#navbarContent a{
+		color:#E5EBB7;
+	
+	}
+	
+	
+@media (max-width:920px){
+	#mainNav ul{
+		display: flex;
+	    justify-content:center;
+	    flex-direction: column;
+	    align-items:center;
+	}
+	.col-md-12{
+		display:flex;
+	}
+	#my a{
+		display:none;
+	}
+	.mainImg img{
+		display:flex;
+	    justify-content: center;
+		width:100%;
+	}
+	
+	
+	
+}
