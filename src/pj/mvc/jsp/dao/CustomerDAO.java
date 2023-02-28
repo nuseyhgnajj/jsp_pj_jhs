@@ -3,21 +3,21 @@ package pj.mvc.jsp.dao;
 import pj.mvc.jsp.dto.CustomerDTO;
 
 public interface CustomerDAO {
-	// id ì¤‘ë³µí™•ì¸ ì²˜ë¦¬
+	// id Áßº¹È®ÀÎ Ã³¸®
 	public int idCheck(String strId);
 	
-	// íšŒì›ê°€ì… ì²˜ë¦¬
+	// È¸¿ø°¡ÀÔ Ã³¸®
 	public int insertCustomer(CustomerDTO dto);
 	
-	// ë¡œê·¸ì¸ ì²˜ë¦¬	// íšŒì›ì •ë³´ ì¸ì¦( ìˆ˜ì •, íƒˆí‡´ )
+	// ·Î±×ÀÎ Ã³¸®	// È¸¿øÁ¤º¸ ÀÎÁõ( ¼öÁ¤, Å»Åğ )
 	public int idPasswordChk(String strId, String strPassword);
 	
-	// íšŒì›ì •ë³´ ì¸ì¦ ë° íƒˆí‡´ ì²˜ë¦¬
+	// È¸¿øÁ¤º¸ ÀÎÁõ ¹× Å»Åğ Ã³¸®
 	public int deleteCustomer(String strId);
 	
-	// íšŒì›ì •ë³´ ì¸ì¦ ë° ìƒì„¸ í˜ì´ì§€ (ìƒì„¸í˜ì´ì§€ : ìˆ˜ì •ì„ ìœ„í•œ)'
+	// È¸¿øÁ¤º¸ ÀÎÁõ ¹× »ó¼¼ ÆäÀÌÁö (»ó¼¼ÆäÀÌÁö : ¼öÁ¤À» À§ÇÑ)'
 	public CustomerDTO getCustomerDetail(String strId);
 	
-	// íšŒì›ì •ë³´ ìˆ˜ì • ì²˜ë¦¬
+	// È¸¿øÁ¤º¸ ¼öÁ¤ Ã³¸®
 	public int updateCustomer(CustomerDTO dto);
 }

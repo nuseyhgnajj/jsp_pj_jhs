@@ -15,10 +15,10 @@ import javax.sql.DataSource;
 import pj.mvc.jsp.dto.CustomerDTO;
 
 public class CustomerDAOImpl implements CustomerDAO{
-	// ì»¤ë„¥ì…˜í’€ ê°ì²´ë¥¼ ë³´ê´€
+	// Ä¿³Ø¼ÇÇ® °´Ã¼¸¦ º¸°ü
 	DataSource dataSource;
 	
-	//ë””í´íŠ¸ ìƒì„±ìž --> private:  new ìƒì„± ì•ˆë¨ ~~> ë‹¤ë¥¸ê³³ì—ì„œ í˜¸ì¶œ ì‹œ ì‹±ê¸€í†¤ ë°©ì‹ìœ¼ë¡œ êµ¬í˜„ 
+	//µðÆúÆ® »ý¼ºÀÚ --> private:  new »ý¼º ¾ÈµÊ ~~> ´Ù¸¥°÷¿¡¼­ È£Ãâ ½Ã ½Ì±ÛÅæ ¹æ½ÄÀ¸·Î ±¸Çö 
 	private CustomerDAOImpl() {
 		try {
 			Context context = new InitialContext();
@@ -28,7 +28,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 		}
 	}
 	
-	// ì‹±ê¸€í†¤ ì ìš©
+	// ½Ì±ÛÅæ Àû¿ë
 	private static CustomerDAOImpl instance = new CustomerDAOImpl();
 	public static CustomerDAOImpl getInstance() {
 		if(instance == null) {
@@ -37,9 +37,9 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return instance;
 	}
 
-	@Override	// id ì¤‘ë³µí™•ì¸ ì²˜ë¦¬
+	@Override	// id Áßº¹È®ÀÎ Ã³¸®
 	public int idCheck(String strId) {
-		System.out.println("====>> CustomerDAOImpl idCheck dao : id ì¤‘ë³µí™•ì¸ ì²˜ë¦¬");
+		System.out.println("====>> CustomerDAOImpl idCheck dao : id Áßº¹È®ÀÎ Ã³¸®");
 		int selectCnt = 0;
 		
 		Connection conn = null;
@@ -72,9 +72,9 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return selectCnt;
 	}
 
-	@Override	// íšŒì›ê°€ìž… ì²˜ë¦¬
+	@Override	// È¸¿ø°¡ÀÔ Ã³¸®
 	public int insertCustomer(CustomerDTO dto) {
-		System.out.println("====>> CustomerDAOImpl insertCustomer dao : íšŒì›ê°€ìž… ì²˜ë¦¬");
+		System.out.println("====>> CustomerDAOImpl insertCustomer dao : È¸¿ø°¡ÀÔ Ã³¸®");
 		Connection conn = null;
 		int insertCnt = 0;
 		PreparedStatement pstmt = null;
@@ -93,7 +93,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 			pstmt.setString(7, dto.getEmail());
 			pstmt.setTimestamp(8, dto.getRegDate());
 			
-			// ì¿¼ë¦¬ ì‹¤í–‰ => executeUpdate()   ==> intí˜• -> ì„±ê³µ 1 ì‹¤íŒ¨ 0 ë°˜í™˜
+			// Äõ¸® ½ÇÇà => executeUpdate()   ==> intÇü -> ¼º°ø 1 ½ÇÆÐ 0 ¹ÝÈ¯
 			insertCnt = pstmt.executeUpdate();	
 			System.out.println("insertCnt >> " + insertCnt);
 
@@ -112,9 +112,9 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return insertCnt;
 	}
 
-	@Override	// ë¡œê·¸ì¸ ì²˜ë¦¬	// íšŒì›ì •ë³´ ì¸ì¦( ìˆ˜ì •, íƒˆí‡´ )
+	@Override	// ·Î±×ÀÎ Ã³¸®	// È¸¿øÁ¤º¸ ÀÎÁõ( ¼öÁ¤, Å»Åð )
 	public int idPasswordChk(String strId, String strPassword) {
-		System.out.println("====>> CustomerDAOImpl idPasswordChk dao : ë¡œê·¸ì¸ ì²˜ë¦¬");
+		System.out.println("====>> CustomerDAOImpl idPasswordChk dao : ·Î±×ÀÎ Ã³¸®");
 		int selectCnt = 0;
 		
 		Connection conn = null;
@@ -130,7 +130,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 			pstmt.setString(1, strId);
 			pstmt.setString(2, strPassword);
 			
-			//ì¿¼ë¦¬ì‹¤í–‰
+			//Äõ¸®½ÇÇà
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -152,9 +152,9 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return selectCnt;
 	}
 
-	@Override	// íšŒì›ì •ë³´ ì¸ì¦ ë° íƒˆí‡´ ì²˜ë¦¬
+	@Override	// È¸¿øÁ¤º¸ ÀÎÁõ ¹× Å»Åð Ã³¸®
 	public int deleteCustomer(String strId) {
-		System.out.println("====>> CustomerDAOImpl deleteCustomer dao : íšŒì›ì •ë³´ ì¸ì¦ ë° íƒˆí‡´ ì²˜ë¦¬");
+		System.out.println("====>> CustomerDAOImpl deleteCustomer dao : È¸¿øÁ¤º¸ ÀÎÁõ ¹× Å»Åð Ã³¸®");
 		int deleteCnt = 0;
 		
 		Connection conn = null;
@@ -167,7 +167,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, strId);
 
-			//ì¿¼ë¦¬ì‹¤í–‰
+			//Äõ¸®½ÇÇà
 			deleteCnt = pstmt.executeUpdate();
 			
 			System.out.println("deleteCnt >> "+ deleteCnt);
@@ -185,12 +185,12 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return deleteCnt;
 	}
 
-	@Override	// íšŒì›ì •ë³´ ì¸ì¦ ë° ìƒì„¸ íŽ˜ì´ì§€ (ìƒì„¸íŽ˜ì´ì§€ : ìˆ˜ì •ì„ ìœ„í•œ)'
+	@Override	// È¸¿øÁ¤º¸ ÀÎÁõ ¹× »ó¼¼ ÆäÀÌÁö (»ó¼¼ÆäÀÌÁö : ¼öÁ¤À» À§ÇÑ)'
 	public CustomerDTO getCustomerDetail(String strId) {
-		System.out.println("====>> CustomerDAOImpl getCustomerDetail: íšŒì›ì •ë³´ ì¸ì¦ ë° ìƒì„¸ íŽ˜ì´ì§€");
+		System.out.println("====>> CustomerDAOImpl getCustomerDetail: È¸¿øÁ¤º¸ ÀÎÁõ ¹× »ó¼¼ ÆäÀÌÁö");
 		
 		int selectCnt = 0;
-		// 1.ì •ë³´ë¥¼ ë‹´ì„ CustomerDTO ë°”êµ¬ë‹ˆ ìƒì„±
+		// 1.Á¤º¸¸¦ ´ãÀ» CustomerDTO ¹Ù±¸´Ï »ý¼º
 		CustomerDTO dto = new CustomerDTO();
 		
 		Connection conn = null;
@@ -200,18 +200,18 @@ public class CustomerDAOImpl implements CustomerDAO{
 		try {
 			conn = dataSource.getConnection();
 			
-			// 2.strId (ë¡œê·¸ì¸ í™”ë©´ì—ì„œ ìž…ë ¥ë°›ì€ ì„¸ì…˜ ì•„ì´ë””)ì™€ ì¼ì¹˜í•˜ëŠ” ë°ì´í„°ê°€ ìžˆëŠ”ì§€ ì¡°íšŒí•´ì£¼ì„¸ìš©
+			// 2.strId (·Î±×ÀÎ È­¸é¿¡¼­ ÀÔ·Â¹ÞÀº ¼¼¼Ç ¾ÆÀÌµð)¿Í ÀÏÄ¡ÇÏ´Â µ¥ÀÌÅÍ°¡ ÀÖ´ÂÁö Á¶È¸ÇØÁÖ¼¼¿ë
 			String sql ="SELECT * FROM mvc_customer_tbl WHERE id = ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, strId);
 			
-			//ì¿¼ë¦¬ì‹¤í–‰
+			//Äõ¸®½ÇÇà
 			rs = pstmt.executeQuery();
 			
-			// 3. ResultSetì—ì„œ idì™€ ì¼ì¹˜í•˜ëŠ” í•œ ì‚¬ëžŒì˜ íšŒì›ì •ë³´ê°€ ì¡´ìž¬í•˜ë‚˜ìš”? ì¡´ìž¬í•˜ë©´!  ë°‘ì— ì‹¤í–‰í•´ì£¼ì„¸ìš”
+			// 3. ResultSet¿¡¼­ id¿Í ÀÏÄ¡ÇÏ´Â ÇÑ »ç¶÷ÀÇ È¸¿øÁ¤º¸°¡ Á¸ÀçÇÏ³ª¿ä? Á¸ÀçÇÏ¸é!  ¹Ø¿¡ ½ÇÇàÇØÁÖ¼¼¿ä
 			if(rs.next()) {
-				// ResultSetì„ ì½ì–´ì„œ CustomerDTOì— setterë¡œ ë‹´ì•„ì¤ë‹ˆë‹¤
+				// ResultSetÀ» ÀÐ¾î¼­ CustomerDTO¿¡ setter·Î ´ã¾ÆÁÝ´Ï´Ù
 				dto.setId(rs.getString("id"));
 				dto.setPassword(rs.getString("password"));
 				dto.setName(rs.getString("name"));
@@ -232,12 +232,12 @@ public class CustomerDAOImpl implements CustomerDAO{
 				e.printStackTrace();
 			}
 		}
-		return dto;	//ë¦¬í„´ê°’ ë³µìˆ˜ê°œ setter, getter
+		return dto;	//¸®ÅÏ°ª º¹¼ö°³ setter, getter
 	}
 
-	@Override	// íšŒì›ì •ë³´ ìˆ˜ì • ì²˜ë¦¬
+	@Override	// È¸¿øÁ¤º¸ ¼öÁ¤ Ã³¸®
 	public int updateCustomer(CustomerDTO dto) {
-		System.out.println("====>> CustomerDAOImpl updateCustomer: íšŒì›ì •ë³´ ìˆ˜ì • ì²˜ë¦¬");
+		System.out.println("====>> CustomerDAOImpl updateCustomer: È¸¿øÁ¤º¸ ¼öÁ¤ Ã³¸®");
 		
 		int updateCnt = 0;
 		
@@ -258,7 +258,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 			pstmt.setTimestamp(7, dto.getRegDate());
 			pstmt.setString(8,dto.getId());
 			
-			//ì¿¼ë¦¬ì‹¤í–‰
+			//Äõ¸®½ÇÇà
 			updateCnt = pstmt.executeUpdate();
 			
 			System.out.println("updateCnt >> "+ updateCnt);

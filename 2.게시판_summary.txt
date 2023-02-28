@@ -1,0 +1,88 @@
+
+==================== admin 게시판 시작 =========================
+1. admin > csCenter > board_list.jsp
+		==> header, footer, leftMenu  분리 후  include
+		==> 본문내용 수정
+============================================================
+
+-- jsp_pj_126 계정에서 작업
+DROP TABLE  mvc_board_tbl CASCADE  CONSTRAINTS;
+CREATE TABLE mvc_board_tbl(
+    num           	NUMBER(7) 		PRIMARY KEY,   	-- 	글번호
+    title			VARCHAR2(50) 	NOT NULL,   	--	글제목
+    content			CLOB 			NOT NULL,   	--	글내용
+    writer         	VARCHAR2(30) 	NOT NULL,      	--	작성자
+    password		VARCHAR2(30) 	NOT NULL,      	--	수정, 삭제용 비밀번호
+    readCnt			NUMBER(6)		DEFAULT 0,		--  조회수
+    regDate       	TIMESTAMP 		DEFAULT sysdate -- 가입일
+);
+SELECT * FROM mvc_board_tbl;
+COMMIT;
+
+CLOB	: 대용량 텍스트 자료형 
+BLOB 	: 대용량 바이너리 자료형
+============================================================
+[BACKEND : java resources > src > 기본패키지 : pj.mvc.jsp]
+	a DTO : pj.mvc.jsp.dto
+			== BoardDTO.java
+					: 계정생성(5번) -> 테이블 생성 -> BoardDTO 멤버변수, setter/getter	
+
+	b. CONTROLLER : pj.mvc.jsp.controller
+			== new servlet > BoardController.java
+		@WebServlet("*.bo")
+			=> 진입시 .do인 요청만 받겠다는 의미 , 반드시 do가 아니어도 됨~ 
+				- customer => *.do
+				- admin => *.ad
+					
+			
+	* common / setting.jsp = path 설정 => 모든 jsp 페이지에서 include 시키고 ${path}
+	* 실행이 안되는 경우 setting.jsp 에러가 있거나, jar파일이 없거나, header.jsp에서 잘못 준 경우
+					또는 url.equals 잘못준 경우 , @WebServlet 잘못준 경우
+	
+	c.Service / ServiceImpl : pj.mvc.jsp.service 
+			== BoardService.java		: 인터페이스
+			== BoardServiceImpl.java	: 
+	
+	d.DAO/DAOImpl :  pj.mvc.jsp.dao
+			== BoardDAO.java			: 인터페이스
+			== BoardDAOImpl.java
+
+
+=============================================================
+*  커넥션풀(DBCP: DataBase Connection Pool 방식)
+	=> 서버 -> 톰캣 -> context.xml -> source에 
+	=> 톰캣 재설치 시 다시 추가해야 하며 , 안하면 DB연결이 안된다
+
+	<!-- jsp_pj_126 / jsp mvc 수업 / name = 식별자 > 중복되면 에러-->
+	<Resource
+		author = "Container"	
+		name = "jdbc/jsp_pj_126"
+		type = "javax.sql.DataSource"
+		
+		driverClassName = "oracle.jdbc.driver.OracleDriver"
+		url = "jdbc:oracle:thin:@localhost:1521:xe"
+		username = "jsp_pj_126"
+		password = "tiger"
+	
+		maxActive = "5"
+		maxWait = "1000"	
+	/>
+
+=============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

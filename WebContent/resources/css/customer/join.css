@@ -1,0 +1,86 @@
+@charset "UTF-8";
+hr {
+	border: 0; 
+	height: 1px; 
+	background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+table{
+	border-collapse: separate;
+	border-spacing: 10px 10px;
+}
+input{
+	padding:5px 5px;
+	margin:0 10px 0 10px;
+}
+
+#container{
+	width:100%;
+	margin:0 auto;
+}
+/* -------- #콘텐츠 -------- */
+#contents{ 
+	display: inline-block;
+	max-width : 1240px;
+	width : 90%;
+	margin-top: 3%;
+	margin-left: 10%;
+	min-height: 300px;
+	margin-bottom: 50px;
+}
+/* -------- #타이틀 ----------*/
+#title{
+	letter-spacing: 3px;
+	text-align:justify;
+	margin-bottom: 30px;
+	margin-left: 50px;
+}
+#title h1{
+	font-weight: bold;
+	color : darkslategrey;
+}
+
+#section{
+	padding:10px 20px 20px 0;
+
+}
+.join{
+	display:flex;
+	justify-content:center;
+	max-width:1240px;
+	margin:40px 40px;
+	height:auto;
+}
+
+.join th{
+	font-size:15px;
+	font-weight: lighter;
+	letter-spacing: 5px;
+	color: #ffffff;
+	width:150px;
+	height:60px;
+	text-align:center;
+	padding-right:10px;
+	padding-left:20px;
+	background:#657753b4;
+	margin-right:5px;
+	border-radius: 100%;
+}
+.input{
+	width:500px;
+	height:40px;
+	border:1px solid rgba(139, 147, 136, 0.622);
+	border-radius: 10px;
+	box-sizing:border-box;
+	padding:0 0 0 10px;
+}
+.inputButton{
+	background-color:#657753b4;
+	border:none;
+	border-radius:10px;
+	font-size:16px;
+	color: #ffffff;
+	padding:10px 15px 10px 15px;
+}

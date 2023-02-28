@@ -6,29 +6,29 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//ì¸í„°í˜ì´ìŠ¤ : ê¸°ëŠ¥ì •ì˜ì„œ , ì‘ì—…ëª…ì„¸ì„œ (ì¶”ìƒë©”ì„œë“œì™€ ìƒìˆ˜ë¡œ êµ¬ì„±)
+//ÀÎÅÍÆäÀÌ½º : ±â´ÉÁ¤ÀÇ¼­ , ÀÛ¾÷¸í¼¼¼­ (Ãß»ó¸Ş¼­µå¿Í »ó¼ö·Î ±¸¼º)
 public interface CustomerService {
-	// id ì¤‘ë³µí™•ì¸ ì²˜ë¦¬
+	// id Áßº¹È®ÀÎ Ã³¸®
 	public void idConfirmAction(HttpServletRequest req, HttpServletResponse res)
 		throws ServletException, IOException;
 	
-	// íšŒì›ê°€ì… ì²˜ë¦¬
+	// È¸¿ø°¡ÀÔ Ã³¸®
 	public void signInAction(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException;
 	
-	// ë¡œê·¸ì¸ ì²˜ë¦¬	// íšŒì›ì •ë³´ ì¸ì¦( ìˆ˜ì •, íƒˆí‡´ )
+	// ·Î±×ÀÎ Ã³¸®	// È¸¿øÁ¤º¸ ÀÎÁõ( ¼öÁ¤, Å»Åğ )
 	public void loginAction(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException;
 	
-	// íšŒì›ì •ë³´ ì¸ì¦ ë° íƒˆí‡´ ì²˜ë¦¬
+	// È¸¿øÁ¤º¸ ÀÎÁõ ¹× Å»Åğ Ã³¸®
 	public void deleteCustomerActioin(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException;
 	
-	// íšŒì›ì •ë³´ ì¸ì¦ ë° ìƒì„¸ í˜ì´ì§€ (ìƒì„¸í˜ì´ì§€ : ìˆ˜ì •ì„ ìœ„í•œ)
+	// È¸¿øÁ¤º¸ ÀÎÁõ ¹× »ó¼¼ ÆäÀÌÁö (»ó¼¼ÆäÀÌÁö : ¼öÁ¤À» À§ÇÑ)
 	public void modifyDetailAction(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException;
 	
-	// íšŒì›ì •ë³´ ìˆ˜ì • ì²˜ë¦¬
+	// È¸¿øÁ¤º¸ ¼öÁ¤ Ã³¸®
 	public void modifyCustomerAction(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException;
 }

@@ -3,8 +3,8 @@ package pj.mvc.jsp.dto;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-// DTO ë°ì´í„° ì „ì†¡ê°ì²´ : setterë¥¼ í†µí•´ ê°’ ì „ë‹¬ -> ë©¤ë²„ë³€ìˆ˜ë¡œ ì „ë‹¬ ë°›ìŒ -> getter
-// ë©¤ë²„ë³€ìˆ˜ = ì»¬ëŸ¼ëª… = inputíƒœê·¸ëª…
+// DTO µ¥ÀÌÅÍ Àü¼Û°´Ã¼ : setter¸¦ ÅëÇØ °ª Àü´Ş -> ¸â¹öº¯¼ö·Î Àü´Ş ¹ŞÀ½ -> getter
+// ¸â¹öº¯¼ö = ÄÃ·³¸í = inputÅÂ±×¸í
 public class CustomerDTO {
 	private String id;
 	private String password;
@@ -13,7 +13,7 @@ public class CustomerDTO {
 	private String address;
 	private String hp;
 	private String email;
-	private Timestamp regDate;	//java.sql.Timestamp ì‹œë¶„ì´ˆ 
+	private Timestamp regDate;	//java.sql.Timestamp ½ÃºĞÃÊ 
 	
 	public CustomerDTO () {}
 	
@@ -82,13 +82,13 @@ public class CustomerDTO {
 
 CREATE TABLE mvc_customer_tbl(
     id            VARCHAR2(20) PRIMARY KEY,   -- ID
-    password      VARCHAR2(20) NOT NULL,      -- ë¹„ë°€ë²ˆí˜¸
-    name          varchar2(20) NOT NULL,      -- ì´ë¦„
-    birthday      DATE         NOT NULL,      -- ìƒë…„ì›”ì¼
-    address       VARCHAR2(50) NOT NULL,      -- ì£¼ì†Œ
-    hp            VARCHAR2(13),               -- í•¸ë“œí°
-    email         VARCHAR2(50) NOT NULL,      -- ì´ë©”ì¼
-    regDate       TIMESTAMP DEFAULT sysdate   -- ê°€ì…ì¼
+    password      VARCHAR2(20) NOT NULL,      -- ºñ¹Ğ¹øÈ£
+    name          varchar2(20) NOT NULL,      -- ÀÌ¸§
+    birthday      DATE         NOT NULL,      -- »ı³â¿ùÀÏ
+    address       VARCHAR2(50) NOT NULL,      -- ÁÖ¼Ò
+    hp            VARCHAR2(13),               -- ÇÚµåÆù
+    email         VARCHAR2(50) NOT NULL,      -- ÀÌ¸ŞÀÏ
+    regDate       TIMESTAMP DEFAULT sysdate   -- °¡ÀÔÀÏ
 );
  
 */

@@ -15,45 +15,45 @@ import pj.mvc.jsp.dto.CustomerDTO;
 
 public class CustomerServiceImpl implements CustomerService{
 
-	@Override	// id ì¤‘ë³µí™•ì¸ ì²˜ë¦¬
+	@Override	// id Áßº¹È®ÀÎ Ã³¸®
 	public void idConfirmAction(HttpServletRequest req, HttpServletResponse res) 
 		 throws ServletException, IOException{
-		System.out.println("[ CustomerServiceImpl idConfirmAction: id ì¤‘ë³µí™•ì¸  ì²˜ë¦¬ ]");
+		System.out.println("[ CustomerServiceImpl idConfirmAction: id Áßº¹È®ÀÎ  Ã³¸® ]");
 		
-		// ***** 3ë‹¨ê³„ í™”ë©´ìœ¼ë¡œë¶€í„° ì…ë ¥ë°›ì€ ê°’ì„ ë°›ëŠ”ë‹¤
+		// ***** 3´Ü°è È­¸éÀ¸·ÎºÎÅÍ ÀÔ·Â¹ŞÀº °ªÀ» ¹Ş´Â´Ù
 		String strId = req.getParameter("id");
 		
-		// ****** 4ë‹¨ê³„. ì‹±ê¸€í†¤ ë°©ì‹ìœ¼ë¡œ daoê°ì²´ ìƒì„±, ë‹¤í˜•ì„± ì ìš©
+		// ****** 4´Ü°è. ½Ì±ÛÅæ ¹æ½ÄÀ¸·Î dao°´Ã¼ »ı¼º, ´ÙÇü¼º Àû¿ë
 		CustomerDAO dao = CustomerDAOImpl.getInstance();
 		
 		
-		// ***** 5ë‹¨ê³„ . ì¤‘ë³µí™•ì¸ì²˜ë¦¬ 
+		// ***** 5´Ü°è . Áßº¹È®ÀÎÃ³¸® 
 		int selectCnt = dao.idCheck(strId);
 		
-		// ***** 6ë‹¨ê³„. jspë¡œ ì²˜ë¦¬ ê²°ê³¼ ì „ë‹¬(ì†ì„±ì „ë‹¬) => setAttribute("ì†ì„±ëª…", ê°’); 
+		// ***** 6´Ü°è. jsp·Î Ã³¸® °á°ú Àü´Ş(¼Ó¼ºÀü´Ş) => setAttribute("¼Ó¼º¸í", °ª); 
 		req.setAttribute("selectCnt", selectCnt);
 		req.setAttribute("id", strId);
 	
 	}
 
-	@Override 	// íšŒì›ê°€ì… ì²˜ë¦¬
+	@Override 	// È¸¿ø°¡ÀÔ Ã³¸®
 	public void signInAction(HttpServletRequest req, HttpServletResponse res)
 		 throws ServletException, IOException{
 		
-		System.out.println("[ CustomerServiceImpl signInAction: íšŒì›ê°€ì… ì²˜ë¦¬ ]");
-		// ***** 3ë‹¨ê³„ í™”ë©´ìœ¼ë¡œë¶€í„° ì…ë ¥ë°›ì€ ê°’ì„ ë°›ëŠ”ë‹¤
-		//DTO ìƒì„±
+		System.out.println("[ CustomerServiceImpl signInAction: È¸¿ø°¡ÀÔ Ã³¸® ]");
+		// ***** 3´Ü°è È­¸éÀ¸·ÎºÎÅÍ ÀÔ·Â¹ŞÀº °ªÀ» ¹Ş´Â´Ù
+		//DTO »ı¼º
 		//setter
 		CustomerDTO dto = new CustomerDTO();
 		dto.setId(req.getParameter("id"));
 		dto.setPassword(req.getParameter("password"));
-//		//ë¹„ë°€ë²ˆí˜¸ í™•ì¸
+//		//ºñ¹Ğ¹øÈ£ È®ÀÎ
 //		dto.setPassword(req.getParameter("repassword"));
 //		String repassword = req.getParameter("repassword");
 		dto.setName(req.getParameter("name"));
 		dto.setBirthday(Date.valueOf(req.getParameter("birthday")));
 		dto.setAddress(req.getParameter("address"));
-		//í•¸ë“œí°ì€ í•„ìˆ˜ê°€ ì•„ë‹ˆë¯€ë¡œ nullê°’ì´ ë“¤ì–´ì˜¬ ìˆ˜ ìˆìœ¼ë¯€ë¡œ ê°’ì´ ì¡´ì¬í•  ë•Œë§Œ ë°›ì•„ì˜¨ë‹¤
+		//ÇÚµåÆùÀº ÇÊ¼ö°¡ ¾Æ´Ï¹Ç·Î null°ªÀÌ µé¾î¿Ã ¼ö ÀÖÀ¸¹Ç·Î °ªÀÌ Á¸ÀçÇÒ ¶§¸¸ ¹Ş¾Æ¿Â´Ù
 		String hp = "";
 		String hp1 = req.getParameter("phone1");
 		String hp2 = req.getParameter("phone2");
@@ -62,121 +62,120 @@ public class CustomerServiceImpl implements CustomerService{
 			hp = hp1 + "-" + hp2 + "-" + hp3;
 		}
 		dto.setHp(hp);
-		//ì´ë©”ì¼
+		//ÀÌ¸ŞÀÏ
 		String email = "";
 		String email1 = req.getParameter("email1");
 		String email2 = req.getParameter("email2");
 		email = email1 + "@" + email2 ;
 		dto.setEmail(email);
 		
-		//regDateëŠ” ì…ë ¥ê°’ì´ ì—†ìœ¼ë©´ defaultë¡œ sysdateë¥¼ ì„¤ì •í–ˆìŒ, ì•„ë˜ ë¬¸ì¥ì€ ì§ì ‘ ê°’ì„ ì„¤ì •í•˜ëŠ” ê²½ìš°
+		//regDate´Â ÀÔ·Â°ªÀÌ ¾øÀ¸¸é default·Î sysdate¸¦ ¼³Á¤ÇßÀ½, ¾Æ·¡ ¹®ÀåÀº Á÷Á¢ °ªÀ» ¼³Á¤ÇÏ´Â °æ¿ì
 		dto.setRegDate(new Timestamp(System.currentTimeMillis()));
 
-		// ****** 4ë‹¨ê³„. ì‹±ê¸€í†¤ ë°©ì‹ìœ¼ë¡œ daoê°ì²´ ìƒì„±, ë‹¤í˜•ì„± ì ìš©
+		// ****** 4´Ü°è. ½Ì±ÛÅæ ¹æ½ÄÀ¸·Î dao°´Ã¼ »ı¼º, ´ÙÇü¼º Àû¿ë
 		// CustomerDAOImpl insertCustomer()
-		// CustomerDAO (ì¸í„°í˜ì´ìŠ¤)  ==> CustomerDAOImpl()
+		// CustomerDAO (ÀÎÅÍÆäÀÌ½º)  ==> CustomerDAOImpl()
 		CustomerDAO dao = CustomerDAOImpl.getInstance();
 		
-		// ***** 5ë‹¨ê³„ . íšŒì›ê°€ì…ì²˜ë¦¬ 
-		int insertCnt = dao.insertCustomer(dto);				//insertCustomer(dto)ì˜ ë¦¬í„´ íƒ€ì…ì€ intì´ë¯€ë¡œ ë³€ìˆ˜ì— ë‹´ì•„ì¤€ë‹¤
+		// ***** 5´Ü°è . È¸¿ø°¡ÀÔÃ³¸® 
+		int insertCnt = dao.insertCustomer(dto);				//insertCustomer(dto)ÀÇ ¸®ÅÏ Å¸ÀÔÀº intÀÌ¹Ç·Î º¯¼ö¿¡ ´ã¾ÆÁØ´Ù
 		
 		System.out.println(" ====>> CustomerServiceImpl signInAction insertCnt >> " + insertCnt);
 		
-		// ***** 6ë‹¨ê³„. jspë¡œ ì²˜ë¦¬ ê²°ê³¼ ì „ë‹¬(ì†ì„±ì „ë‹¬) => setAttribute("ì†ì„±ëª…", ê°’); 
-		req.setAttribute("insertCnt", insertCnt);			// objectí˜•ìœ¼ë¡œ ë°˜í™˜ ==> getAttribute()ì—ì„œ typeë³€í˜•í•´ì•¼í•¨
-															//ë°˜í™˜ê°’ getAttribute ~> joinAction.jspì—ì„œ <% %> ì‘ ì„±
+		// ***** 6´Ü°è. jsp·Î Ã³¸® °á°ú Àü´Ş(¼Ó¼ºÀü´Ş) => setAttribute("¼Ó¼º¸í", °ª); 
+		req.setAttribute("insertCnt", insertCnt);			// objectÇüÀ¸·Î ¹İÈ¯ ==> getAttribute()¿¡¼­ typeº¯ÇüÇØ¾ßÇÔ
+															//¹İÈ¯°ª getAttribute ~> joinAction.jsp¿¡¼­ <% %> ÀÛ ¼º
 		
 	
 	}
 
-	@Override	// ë¡œê·¸ì¸ ì²˜ë¦¬
+	@Override	// ·Î±×ÀÎ Ã³¸®
 	public void loginAction(HttpServletRequest req, HttpServletResponse res) 
 		 throws ServletException, IOException{
-		System.out.println("[ CustomerServiceImpl loginAction:  ë¡œê·¸ì¸ ì²˜ë¦¬ ]");
+		System.out.println("[ CustomerServiceImpl loginAction:  ·Î±×ÀÎ Ã³¸® ]");
 		
-		// ***** 3ë‹¨ê³„ í™”ë©´ìœ¼ë¡œë¶€í„° ì…ë ¥ë°›ì€ ê°’ì„ ë°›ëŠ”ë‹¤
+		// ***** 3´Ü°è È­¸éÀ¸·ÎºÎÅÍ ÀÔ·Â¹ŞÀº °ªÀ» ¹Ş´Â´Ù
 		String strId = req.getParameter("id");
 		String strPassword = req.getParameter("password");
 		
-		// ****** 4ë‹¨ê³„. ì‹±ê¸€í†¤ ë°©ì‹ìœ¼ë¡œ daoê°ì²´ ìƒì„±, ë‹¤í˜•ì„± ì ìš©
+		// ****** 4´Ü°è. ½Ì±ÛÅæ ¹æ½ÄÀ¸·Î dao°´Ã¼ »ı¼º, ´ÙÇü¼º Àû¿ë
 		CustomerDAO dao = CustomerDAOImpl.getInstance();
 		
-		// ***** 5ë‹¨ê³„ . ë¡œê·¸ì¸ ì²˜ë¦¬
+		// ***** 5´Ü°è . ·Î±×ÀÎ Ã³¸®
 		int selectCnt = dao.idPasswordChk(strId, strPassword);
 		
 		
-		// ë¡œê·¸ì¸ ì„±ê³µì‹œ ì„¸ì…˜ID ì„¤ì •
+		// ·Î±×ÀÎ ¼º°ø½Ã ¼¼¼ÇID ¼³Á¤
 		if(selectCnt == 1) {
 			HttpSession session = req.getSession();
 			session.setAttribute("sessionID", strId);
-			// í•œì¤„ë¡œ ->	req.getSession().setAttribute("sessionID",	strId); 
+			// ÇÑÁÙ·Î ->	req.getSession().setAttribute("sessionID",	strId); 
 			
 		}
-		// ***** 6ë‹¨ê³„. jspë¡œ ì²˜ë¦¬ ê²°ê³¼ ì „ë‹¬(ì†ì„±ì „ë‹¬) => setAttribute("ì†ì„±ëª…", ê°’); 
-		// req.setAttribute("selectCnt", selectCnt);	~> ì„¸ì…˜ìœ¼ë¡œë§Œ ë¡œê·¸ì¸ íŒë‹¨
+		// ***** 6´Ü°è. jsp·Î Ã³¸® °á°ú Àü´Ş(¼Ó¼ºÀü´Ş) => setAttribute("¼Ó¼º¸í", °ª); 
+		// req.setAttribute("selectCnt", selectCnt);	~> ¼¼¼ÇÀ¸·Î¸¸ ·Î±×ÀÎ ÆÇ´Ü
 		
 	}
 
-	@Override	// íšŒì›ì •ë³´ ì¸ì¦ ë° íƒˆí‡´ ì²˜ë¦¬
+	@Override	// È¸¿øÁ¤º¸ ÀÎÁõ ¹× Å»Åğ Ã³¸®
 	public void deleteCustomerActioin(HttpServletRequest req, HttpServletResponse res) 
 		 throws ServletException, IOException{
-		System.out.println("[ CustomerServiceImpl deleteCustomerActioin:  íšŒì›ì •ë³´ ì¸ì¦ ë° íƒˆí‡´ ì²˜ë¦¬ ]");
+		System.out.println("[ CustomerServiceImpl deleteCustomerActioin:  È¸¿øÁ¤º¸ ÀÎÁõ ¹× Å»Åğ Ã³¸® ]");
 		
-		// ***** 3ë‹¨ê³„ í™”ë©´ìœ¼ë¡œë¶€í„° ì…ë ¥ë°›ì€ ê°’ì„ ë°›ëŠ”ë‹¤
+		// ***** 3´Ü°è È­¸éÀ¸·ÎºÎÅÍ ÀÔ·Â¹ŞÀº °ªÀ» ¹Ş´Â´Ù
 		String strId = (String)req.getSession().getAttribute("sessionID");
 		String strPassword = req.getParameter("password");
 		
-		// ****** 4ë‹¨ê³„. ì‹±ê¸€í†¤ ë°©ì‹ìœ¼ë¡œ daoê°ì²´ ìƒì„±, ë‹¤í˜•ì„± ì ìš©
+		// ****** 4´Ü°è. ½Ì±ÛÅæ ¹æ½ÄÀ¸·Î dao°´Ã¼ »ı¼º, ´ÙÇü¼º Àû¿ë
 		CustomerDAO dao = CustomerDAOImpl.getInstance();
 			
-		//**** 5ë‹¨ê³„ íšŒì›ì •ë³´ ì¸ì¦ ë° íƒˆí‡´ì²˜ë¦¬
-		// ***** 5.1ë‹¨ê³„ . íšŒì›ì •ë³´ ì¸ì¦
+		//**** 5´Ü°è È¸¿øÁ¤º¸ ÀÎÁõ ¹× Å»ÅğÃ³¸®
+		// ***** 5.1´Ü°è . È¸¿øÁ¤º¸ ÀÎÁõ
 		int selectCnt = dao.idPasswordChk(strId, strPassword);
 		int deleteCnt = 0;
-		//  ***** 5.2ë‹¨ê³„ . íƒˆí‡´ ì²˜ë¦¬
+		//  ***** 5.2´Ü°è . Å»Åğ Ã³¸®
 		if(selectCnt == 1) {
-			// íƒˆí‡´ì²˜ë¦¬ ì‹¤í–‰
+			// Å»ÅğÃ³¸® ½ÇÇà
 			deleteCnt = dao.deleteCustomer(strId);
 		}
-		// ***** 6ë‹¨ê³„. jspë¡œ ì²˜ë¦¬ ê²°ê³¼ ì „ë‹¬(ì†ì„±ì „ë‹¬) => setAttribute("ì†ì„±ëª…", ê°’); 
+		// ***** 6´Ü°è. jsp·Î Ã³¸® °á°ú Àü´Ş(¼Ó¼ºÀü´Ş) => setAttribute("¼Ó¼º¸í", °ª); 
 		req.setAttribute("deleteCnt", deleteCnt);
-		req.setAttribute("selectCnt", selectCnt);
 	}
 	
 
-	@Override	// íšŒì›ì •ë³´ ì¸ì¦ ë° ìƒì„¸ í˜ì´ì§€ (ìƒì„¸í˜ì´ì§€ : ìˆ˜ì •ì„ ìœ„í•œ)
+	@Override	// È¸¿øÁ¤º¸ ÀÎÁõ ¹× »ó¼¼ ÆäÀÌÁö (»ó¼¼ÆäÀÌÁö : ¼öÁ¤À» À§ÇÑ)
 	public void modifyDetailAction(HttpServletRequest req, HttpServletResponse res) 
 		 throws ServletException, IOException{
-		System.out.println("[ CustomerServiceImpl modifyDetailAction:  íšŒì›ì •ë³´ ì¸ì¦ ë° ìƒì„¸ í˜ì´ì§€ (ìƒì„¸í˜ì´ì§€ : ìˆ˜ì •ì„ ìœ„í•œ) ]");
+		System.out.println("[ CustomerServiceImpl modifyDetailAction:  È¸¿øÁ¤º¸ ÀÎÁõ ¹× »ó¼¼ ÆäÀÌÁö (»ó¼¼ÆäÀÌÁö : ¼öÁ¤À» À§ÇÑ) ]");
 		
-		// ***** 3ë‹¨ê³„ í™”ë©´, ì„¸ì…˜ìœ¼ë¡œë¶€í„° ì…ë ¥ë°›ì€ ê°’ì„ ë°›ëŠ”ë‹¤
+		// ***** 3´Ü°è È­¸é, ¼¼¼ÇÀ¸·ÎºÎÅÍ ÀÔ·Â¹ŞÀº °ªÀ» ¹Ş´Â´Ù
 		String strId = (String)req.getSession().getAttribute("sessionID");
 		String strPassword = req.getParameter("password");
 		
-		// ****** 4ë‹¨ê³„. ì‹±ê¸€í†¤ ë°©ì‹ìœ¼ë¡œ daoê°ì²´ ìƒì„±, ë‹¤í˜•ì„± ì ìš©
+		// ****** 4´Ü°è. ½Ì±ÛÅæ ¹æ½ÄÀ¸·Î dao°´Ã¼ »ı¼º, ´ÙÇü¼º Àû¿ë
 		CustomerDAO dao = CustomerDAOImpl.getInstance();
 			
-		//**** 5ë‹¨ê³„ íšŒì›ì •ë³´ ì¸ì¦ ë° ìˆ˜ì •ì²˜ë¦¬
-		// ***** 5.1ë‹¨ê³„ . íšŒì›ì •ë³´ ì¸ì¦
+		//**** 5´Ü°è È¸¿øÁ¤º¸ ÀÎÁõ ¹× ¼öÁ¤Ã³¸®
+		// ***** 5.1´Ü°è . È¸¿øÁ¤º¸ ÀÎÁõ
 		int selectCnt = dao.idPasswordChk(strId, strPassword);
 		
 		CustomerDTO dto = null;
-		//  ***** 5.2ë‹¨ê³„ . ìˆ˜ì • ì²˜ë¦¬
-		if(selectCnt ==1) {
+		//  ***** 5.2´Ü°è . ¼öÁ¤ Ã³¸®
+		if(selectCnt == 1) {
 			dto = dao.getCustomerDetail(strId);
 		}
 		
-		// ***** 6ë‹¨ê³„. jspë¡œ ì²˜ë¦¬ ê²°ê³¼ ì „ë‹¬(ì†ì„±ì „ë‹¬) => setAttribute("ì†ì„±ëª…", ê°’); 
+		// ***** 6´Ü°è. jsp·Î Ã³¸® °á°ú Àü´Ş(¼Ó¼ºÀü´Ş) => setAttribute("¼Ó¼º¸í", °ª); 
 		req.setAttribute("dto", dto);
 		req.setAttribute("selectCnt", selectCnt);
 	}
 
-	@Override	// íšŒì›ì •ë³´ ìˆ˜ì • ì²˜ë¦¬
+	@Override	// È¸¿øÁ¤º¸ ¼öÁ¤ Ã³¸®
 	public void modifyCustomerAction(HttpServletRequest req, HttpServletResponse res) 
 		 throws ServletException, IOException{
-		System.out.println("[ CustomerServiceImpl modifyCustomerAction:  íšŒì›ì •ë³´ ìˆ˜ì • ì²˜ë¦¬ ]");
+		System.out.println("[ CustomerServiceImpl modifyCustomerAction:  È¸¿øÁ¤º¸ ¼öÁ¤ Ã³¸® ]");
 		
-		// ***** 3 dtoìƒì„±
+		// ***** 3 dto»ı¼º
 		CustomerDTO dto = new CustomerDTO();
 		dto.setId((String)req.getParameter("sessinID"));
 		dto.setPassword(req.getParameter("password"));
@@ -193,7 +192,7 @@ public class CustomerServiceImpl implements CustomerService{
 		}
 		dto.setHp(hp);
 		
-		//ì´ë©”ì¼
+		//ÀÌ¸ŞÀÏ
 		String email = "";
 		String email1 = req.getParameter("email1");
 		String email2 = req.getParameter("email2");
@@ -201,17 +200,16 @@ public class CustomerServiceImpl implements CustomerService{
 		dto.setEmail(email);
 		dto.setRegDate(new Timestamp(System.currentTimeMillis()));
 		
-		//3-2 í™”ë©´ìœ¼ë¡œ ë°›ì€ ê°’ì„ ë°›ì•„ dtoì— ë‹´ëŠ”ë‹¤
+		//3-2 È­¸éÀ¸·Î ¹ŞÀº °ªÀ» ¹Ş¾Æ dto¿¡ ´ã´Â´Ù
 		dto = (CustomerDTO) req.getAttribute("dto");
 		
-		
-		// ****** 4ë‹¨ê³„. ì‹±ê¸€í†¤ ë°©ì‹ìœ¼ë¡œ daoê°ì²´ ìƒì„±, ë‹¤í˜•ì„± ì ìš©
+		// ****** 4´Ü°è. ½Ì±ÛÅæ ¹æ½ÄÀ¸·Î dao°´Ã¼ »ı¼º, ´ÙÇü¼º Àû¿ë
 		CustomerDAO dao = CustomerDAOImpl.getInstance();
 		
-		//**** 5ë‹¨ê³„ ìˆ˜ì •ì²˜ë¦¬
+		//**** 5´Ü°è ¼öÁ¤Ã³¸®
 		int updateCnt = dao.updateCustomer(dto);
 		
-		//  ***** 6ë‹¨ê³„ jspë¡œ ì²˜ë¦¬ ê²°ê³¼ ì „ë‹¬ 
+		//  ***** 6´Ü°è jsp·Î Ã³¸® °á°ú Àü´Ş 
 		req.setAttribute("updateCnt", updateCnt);
 		
 	}

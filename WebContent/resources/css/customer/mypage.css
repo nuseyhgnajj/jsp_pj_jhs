@@ -1,0 +1,84 @@
+@charset "UTF-8";
+container{
+	width : 100%;
+	margin : 0 auto;
+}
+hr {
+	border: 0; 
+	height: 1px; 
+	background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+/* -------- #콘텐츠 -------- */
+#contents{ 
+	display: inline-block;
+	max-width : 1240px;
+	width : 90%;
+	margin-top: 3%;
+	margin-left: 10%;
+	min-height: 300px;
+}
+/* -------- #타이틀 ----------*/
+#title{
+	letter-spacing: 3px;
+	text-align:justify;
+	margin-bottom: 30px;
+	margin-left: 50px;
+}
+#title h1{
+	font-weight: bold;
+	color : darkslategrey;
+}
+
+/* ----------- #section1 ------------*/
+#section1{
+	width:100%;
+	margin-bottom: 30px;
+	margin-left: 50px;
+	padding-right:20px;
+	word-spacing: 10px;
+	line-height: 30px;
+}
+#section1 span{
+	font-size: 18px;
+	font-weight: bold;
+	color:darkslategrey;
+	margin-right:40px;
+}
+#section1 a{
+	font-size:16px;
+	color:dimgrey;
+	margin:10px;
+	text-decoration: none;
+}
+.board_menu{
+	display: block;
+}
+/* ----------- #section2 ------------*/
+#section2{
+	margin-bottom:30px;
+}
+#section2 th{
+	color: #656a66;
+	padding-bottom: 20px;
+    text-align: center;
+}
+#section2 td{
+    text-align: center;
+}
+.img img{
+	width:120px;
+	border-radius: 5%;
+    margin: 10px;
+}
+.btnsection{
+	text-align: end;
+    margin-right: 120px;
+}
+.btn{
+	margin: 10px;
+	color:#8c8b8b;
+	border-color: #c5c4c4;
+}
