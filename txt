@@ -1,0 +1,2 @@
+    <!-- jsp_pj_126 / jsp mvc 수업 / name = 식별자 > 중복되면 에러-->
+	<Resource author="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="5" maxWait="1000" name="jdbc/jsp_pj_126" password="tiger" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="jsp_pj_126"/>
