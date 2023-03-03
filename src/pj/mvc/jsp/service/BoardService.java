@@ -25,26 +25,26 @@ public interface BoardService {
 	
 	
 	// 게시판 수정처리
-	public String  boardUpdate(HttpServletRequest req, HttpServletResponse res)
+	public void  boardUpdate(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException;
 	
 	
 	// 게시판 삭제처리
-	public String  deleteAction(HttpServletRequest req, HttpServletResponse res)
+	public void  deleteAction(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException;
 	
 	
 	// 글쓰기 처리
-	public String  boardInsertAction (HttpServletRequest req, HttpServletResponse res)
+	public void  boardInsertAction (HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException;
 	
 	
 	// 댓글작성 처리
-	public String  commentAddAction (HttpServletRequest req, HttpServletResponse res)
+	public void  commentAddAction (HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException;
 	
 	
 	// 댓글목록 처리
-	public String commentListAction (HttpServletRequest req, HttpServletResponse res)
+	public void commentListAction (HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException;
 }

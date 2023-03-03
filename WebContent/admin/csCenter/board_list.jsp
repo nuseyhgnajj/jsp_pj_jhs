@@ -47,25 +47,50 @@
 							<th style = "width :10%">조회수</th>
 						</tr>
 					</thead>
-					<tr> <!-- 게시글이 있으면  -->
-						<td>
-							<label class="checkbox-wrap checkbox-primary">
-								<input type="checkbox" checked><span class="checkmark"></span>
-							</label>
+					<c:forEach var = "dto" items = "${list}">
+						<tr> <!-- 게시글이 있으면  -->
+							<td>
+								<label class="checkbox-wrap checkbox-primary">
+									<input type="checkbox"><span class="checkmark"></span>
+								</label>
+							</td>
+							<td>${dto.num}</td>
+							<td>${dto.writer}</td>
+							<td>
+								<a href ="${path}/board_detailAction.bo?num=${dto.num}">${dto.title}</a>
+							</td>
+							<td>${dto.regDate}</td>
+							<td>${dto.readCnt}</td>
+						</tr>
+					</c:forEach>
+					<tr>
+						<td colspan = "6" align= "center">
+							<!-- 페이징 처리 -->
+							<!-- 이전 버튼 활성화 여부  -->
+							<c:if test = "${paging.startPage>10}">
+								<a href = "${path}/board_list.bo?pageNum=${paging.prev}">[이전]</a>
+							</c:if>
+							
+							<!-- 페이지번호 처리 -->
+							<c:forEach var ="num" begin = "${paging.startPage}" end = "${paging.endPage}" >
+								<a href = "${path}/board_list.bo?pageNum=${num}"><b>${num}</b></a>
+							</c:forEach>
+							
+							<!-- 다음 버튼 활성화 여부  -->
+							<c:if test = "${paging.endPage < paging.pageCount}">
+								<a href = "${path}/board_list.bo?pageNum=${paging.next}">[다음]</a>
+							</c:if>
 						</td>
-						<td>1</td>
-						<td>Gangwondo Night 2 Bedding Set(SS/Q/K)</td>
-						<td>Bedding</td>
-						<td>￦248,000</td>
-						<td>0</td>
+					</tr>
+					<tr>
+						<td colspan = "6" align= "right">
+						<div class = "btnsection">
+							<input class = "btn" type = "button" value = "글쓰기" id = "btnInsert">
+							<input class = "btn" type = "button" value = "삭제">
+							<input class = "btn" type = "button" value = "수정">
+						</div>
 					</tr>
 				</table>
-				<br>
-				
-			</div>
-			<div class = "btnsection">
-				<input class = "btn" type = "button" value = "삭제">
-				<input class = "btn" type = "button" value = "수정">
 			</div>
 		</div>
 	</div>

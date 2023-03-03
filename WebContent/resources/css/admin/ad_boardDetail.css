@@ -13,7 +13,7 @@ hr {
 }
 table {
 	border-collapse: separate;
-	border:none;
+	border-style: groove;
 	text-align: center;
 }
 
@@ -67,10 +67,6 @@ table {
 .product_menu, .order_menu,.other{
 	display: block;
 }
-#addproduct th{
-	color:dimgrey;
-	width:130px;
-}
 
 #section2{
 	margin-bottom:30px;
@@ -78,7 +74,7 @@ table {
 }
 #section2 th{
 	color: #656a66;
-	padding-bottom: 20px;
+	background-color : #c2d696;
 }
 #section2 a{
 	color : black;
@@ -94,4 +90,5 @@ table {
 	margin: 5px;
 	color:#8c8b8b;
 	border-color: #c5c4c4;
+
 }

@@ -29,7 +29,7 @@
 		<div class = "other">
 			<span>기타관리</span>
 			<a href = "customerInfo.html">회원정보</a>
-			<a href = "board.html">게시판&nbsp;</a>
+			<a href = "${path}/board_list.bo">게시판&nbsp;</a>
 			<a href = "total_income.html">결산&nbsp;&nbsp;</a>
 			<a href = "logout.html">로그아웃</a>
 		</div>

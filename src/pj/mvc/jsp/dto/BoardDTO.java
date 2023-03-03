@@ -14,7 +14,7 @@ public class BoardDTO {
 	private int comment_count;	//댓글 갯수
 	
 	
-	public int getNum() {
+	public int getNum(){
 		return num;
 	}
 	public void setNum(int num) {
